@@ -1,0 +1,9 @@
+version: '3.5'
+services:
+  atest:
+    image: abc
+    command: echo test
+    volumes:
+{{range $i, $v := .myvols}}
+        - {{$v}}
+{{end}}
