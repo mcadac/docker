@@ -17,12 +17,12 @@ Examples using docker-app experimental (gotemplate) with the goal of create dock
       * failed to create service alexa_alexandria: Error response from daemon: Mount denied The source path "D:\\develop" is not a valid Windows path
    
    * **Process:**
-      a.  Init a docker-app with the next command: 
+      1.  Init a docker-app with the next command: 
       ```
       docker-app init test-env
       ```
-      b.  Modify the docker-compose.yml
-      c.  The volumes must be defined the verbose form
+      2.  Modify the docker-compose.yml
+      3.  The volumes must be defined the verbose form
     
 #### 2. Other case
 ------------------ 
