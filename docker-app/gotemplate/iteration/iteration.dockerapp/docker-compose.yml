@@ -7,3 +7,11 @@ services:
 {{range $i, $v := .myvols}}
         - {{$v}}
 {{end}}
+
+  hello-world:
+    image: hello-world
+    ports:
+{{range $i, $v := .ports}} 
+      - {{$v}}
+{{end}}
+volumes: {{.volumes}}
