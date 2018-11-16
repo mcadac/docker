@@ -24,8 +24,8 @@ Examples using docker-app experimental (gotemplate) with the goal of create dock
       b.  Modify the docker-compose.yml
       c.  The volumes must be defined the verbose form
     
-### 2. Other case
+#### 2. Other case
 ------------------ 
 
-### 3. Other case
+#### 3. Other case
 -----------------
