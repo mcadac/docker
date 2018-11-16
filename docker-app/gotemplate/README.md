@@ -44,6 +44,7 @@ Examples using docker-app experimental (gotemplate) with the goal of create dock
       - docker service ls
       - docker service logs {hello-service-id-print-last-command}
       ```
+      **Note:** you can execute the example created for me: https://github.com/mcadac/docker/tree/master/docker-app/gotemplate/env-variables
 #### 2. Other case
 ------------------ 
 
