@@ -1,0 +1,8 @@
+version: "3.6"
+services:
+  hello-world:
+    image: hello-world
+    volumes:
+    - type: bind
+      source: ${MY_ENV_VAR}
+      target: /opt/docker/logs

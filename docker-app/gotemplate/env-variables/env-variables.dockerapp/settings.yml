@@ -1,0 +1,2 @@
+volumes:
+   logs: $${MY_ENV_VAR}
