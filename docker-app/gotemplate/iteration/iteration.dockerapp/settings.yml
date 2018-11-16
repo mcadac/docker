@@ -1,3 +1,10 @@
 myvols: 
   - /d/develop:/tmp
   - /d/develop/houston:/tmp/houston
+
+volumes: "{proxy: {external: true}, test: {external: false}, hello: {external: true}}"
+
+ports: 
+  - 8080:80
+  - 9091:9091
+  - 1001:1001
