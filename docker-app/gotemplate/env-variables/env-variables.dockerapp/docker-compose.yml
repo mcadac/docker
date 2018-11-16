@@ -1,0 +1,9 @@
+version: "3.6"
+services: 
+  hello-world:
+     image: hello-world
+     volumes:
+      - type: bind
+        source: {{.volumes.logs}}
+        target: /opt/docker/logs
+
