@@ -5,7 +5,7 @@ Examples using docker-app experimental (gotemplate) with the goal of create dock
 
 ## Cases, Problems or error
 
-#### 1. Use environment variables with docker-app and docker stack deploy
+#### 1. Use environment variables with docker-app and docker stack deploy (Docker for windows)
 ------------------
 
    * **Case:** Set environment variables using docker-app and docker stack deploy
