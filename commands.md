@@ -201,7 +201,7 @@ DOCKER-APP:
 67. docker run -it --rm php:latest /bin/bash
 68. docker build . -t {image-repository-name}
 69. docker run -it --rm {image} /bin/bash
-
+70. docker run -it -P --link "{container_name:{alias_host}}" {image}
 
 ## Docker files
 1. RUN apt-get update && apt-get install -y --no-install-recommends vim && apt-get clean
