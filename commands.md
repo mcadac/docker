@@ -205,6 +205,7 @@ DOCKER-APP:
 71. docker stop $(docker ps -q)
 72. docker stats    ---> **Allow see docker resource usages**
 73. **On windows is '(^\[|Download\\w+:)' and on linux is '(^\\[|Download\\w+:)'**
+	
 	export JAR_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version|grep -Ev '(^\[|Download\\w+:)')
 
 	docker image build \
