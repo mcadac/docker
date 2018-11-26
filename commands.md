@@ -213,6 +213,7 @@ DOCKER-APP:
 		--build-arg APP_JAR=credibanco-adapter-${JAR_VERSION}.jar ./
 	
 74. docker network connect {network_name} {container_name or id}
+75. docker network inspect {network_name} --> **Help us to see information about the network and what containers are connect to the network**
 
 
 ## Docker files
