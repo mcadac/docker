@@ -212,6 +212,8 @@ DOCKER-APP:
 		--tag registry01.payulatam.com:5000/payu/credibanco-adapter:latest \
 		--build-arg APP_JAR=credibanco-adapter-${JAR_VERSION}.jar ./
 	
+74. docker network connect {network_name} {container_name or id}
+
 
 ## Docker files
 1. RUN apt-get update && apt-get install -y --no-install-recommends vim && apt-get clean
