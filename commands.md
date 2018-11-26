@@ -201,7 +201,22 @@ DOCKER-APP:
 67. docker run -it --rm php:latest /bin/bash
 68. docker build . -t {image-repository-name}
 69. docker run -it --rm {image} /bin/bash
+70. docker run -it -P --link "{container_name:{alias_host}}" {image}
+71. docker stop $(docker ps -q)
+72. docker stats    ---> **Allow see docker resource usages**
+73. **On windows is '(^\[|Download\\w+:)' and on linux is '(^\\[|Download\\w+:)'**
+	
+	export JAR_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=project.version|grep -Ev '(^\[|Download\\w+:)')
+
+	docker image build \
+		--tag registry01.payulatam.com:5000/payu/credibanco-adapter:latest \
+		--build-arg APP_JAR=credibanco-adapter-${JAR_VERSION}.jar ./
+	
+74. docker network connect {network_name} {container_name or id}
+75. docker network disconnect {network_name} {container_name or id}
+76. docker network inspect {network_name} --> **Help us to see information about the network and what containers are connect to the network**
 
 
 ## Docker files
 1. RUN apt-get update && apt-get install -y --no-install-recommends vim && apt-get clean
+2. HEALTHCHECK --interval=20s --retries=5 --timeout=30s --start-period=5s CMD curl -I -f "http://localhost:8080" || exit 1
