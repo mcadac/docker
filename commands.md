@@ -217,6 +217,7 @@ DOCKER-APP:
 76. docker network inspect {network_name} --> **Help us to see information about the network and what containers are connect to the network**
 77. docker rmi $(docker images -q) --> **Delete all images**
 78. docker rm $(docker ps -a -q) --> **Delete all containers**
+79. docker system prune -a
 
 ## Docker files
 1. RUN apt-get update && apt-get install -y --no-install-recommends vim && apt-get clean
