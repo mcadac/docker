@@ -9,7 +9,7 @@
   * **Example:** "jdbc:postgresql://host.docker.internal:5432/{database_name}"
   * **References:** https://docs.docker.com/docker-for-windows/networking/#there-is-no-docker0-bridge-on-windows
   
-  ### 1. How to keep a docker container up
+  ### 2. How to keep a docker container up
 
   * **Docker version:** 18.06.1-ce
   * **OS:** Windows 10
