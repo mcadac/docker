@@ -218,6 +218,7 @@ DOCKER-APP:
 77. docker rmi $(docker images -q) --> **Delete all images**
 78. docker rm $(docker ps -a -q) --> **Delete all containers**
 79. docker system prune -a
+80. **Keep to a docker container up** --> add tail -f /dev/null
 
 ## Docker files
 1. RUN apt-get update && apt-get install -y --no-install-recommends vim && apt-get clean
