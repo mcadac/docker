@@ -219,6 +219,7 @@ DOCKER-APP:
 78. docker rm $(docker ps -a -q) --> **Delete all containers**
 79. docker system prune -a
 80. **Keep to a docker container up** --> add tail -f /dev/null
+81. docker config inspect --pretty redeban-adapter-config --> **Print docker config file**
 
 ## Docker files
 1. RUN apt-get update && apt-get install -y --no-install-recommends vim && apt-get clean
