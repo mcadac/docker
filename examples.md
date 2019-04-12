@@ -17,3 +17,6 @@
   * **Example:** CMD ["tail -f /dev/null"]
   * **References:** http://bigdatums.net/2017/11/07/how-to-keep-docker-containers-running/
 
+
+
+sed -i 's/\r//g'
