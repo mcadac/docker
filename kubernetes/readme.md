@@ -129,32 +129,29 @@
         ```minikube ssh``
 
 ## Kubectl
-    ```kubectl cluster-info```
-    ```kubectl describe pods``
-    ```kubectl describe {kind}``
-    ```kubectl run nginx --image nginx```
-    ```kubectl delete {kind} {name}```
-    ```kubectl create -f pod-definition.yml```
-    ```kubectl get pods```
-    ```kubectl get pods -o wide```
-    ```kubectl get replicationcontroller```
-    ```kubectl get replicaset ````
-    ```kubectl replace -f replicaset-definition.yml````
-    ```kubectl scale --replicas=6 -f replicaset-definition.yml````
-    ```kubectl scale --replicas=6 replicaset myapp-replicaset````
-    ```kubectl get all````
-    ```kubectl create -f deploymeny-definition.yml --record```
-    ```kubectl rollout status deployment/{deployment-name}````
-    ```kubectl rollout history deployment/{deployment-name}```
-    ```kubectl rollout undo deployment/{deployment-name}```
-    ```kubectl apply -f {file-name}```
-    ```kubectl get services```
 
+    ```ruby
+    kubectl cluster-info
+    kubectl describe pods
+    kubectl describe {kind}
+    kubectl run nginx --image nginx
+    kubectl delete {kind} {name}
+    kubectl create -f pod-definition.yml
+    kubectl get pods
+    kubectl get pods -o wide
+    kubectl get replicationcontroller
+    kubectl get replicaset 
+    kubectl replace -f replicaset-definition.yml
+    kubectl scale --replicas=6 -f replicaset-definition.yml
+    kubectl scale --replicas=6 replicaset myapp-replicaset
+    kubectl get all
+    kubectl create -f deploymeny-definition.yml --record
+    kubectl rollout status deployment/{deployment-name}
+    kubectl rollout history deployment/{deployment-name}
+    kubectl rollout undo deployment/{deployment-name}
+    kubectl apply -f {file-name}
+    kubectl get services
+    ```
 
 ## References and web pages
     - https://www.osboxes.org
-
-
-
-    adminsandboxmt
-    yS$7vjJ0i81@H8
