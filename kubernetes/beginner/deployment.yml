@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: milo-deployment
+  labels:
+    app: milo-test
+    type: know
+spec:
+  template:
+    metadata: 
+      name: my-pod
+      labels:
+        app: mypod
+        type: proxy
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx 
+  replicas: 3
+  selector:
+    matchLabels:
+      type: proxy
+    
+  
