@@ -119,18 +119,22 @@
     -
 
 ## Minikube
-    ### Commands
+    Commands
+       
         ```brew cask install minikube```
+        
         To start cluster
         ```minikube start```
+        
         To delete cluster
         ```minikube delete```
+        
         To log into the Minikube
         ```minikube ssh``
 
 ## Kubectl
 
-    ```ruby
+    ```
     kubectl cluster-info
     kubectl describe pods
     kubectl describe {kind}
