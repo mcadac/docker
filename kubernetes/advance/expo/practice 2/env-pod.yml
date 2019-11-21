@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-env-pod
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: ubuntu-env
+    image: ubuntu-env
+    imagePullPolicy: Never
+    envFrom:
+      - configMapRef:
+          name: pol-config

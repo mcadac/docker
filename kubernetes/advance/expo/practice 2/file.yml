@@ -1,0 +1,10 @@
+POL_HOME: /usr/local/payu/payu_4
+ENV: DEV
+
+
+kubectl create configmap <name> --from-literal=<key>=<value>
+kubectl create configmap <name> --from-file=<path>
+
+kubectl create -f <file.yml>
+
+

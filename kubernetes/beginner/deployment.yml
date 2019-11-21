@@ -4,7 +4,7 @@ metadata:
   name: milo-deployment
   labels:
     app: milo-test
-    type: know
+    type: type
 spec:
   template:
     metadata: 

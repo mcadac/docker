@@ -40,10 +40,7 @@
     - Replication set (New)
         The replicaset works with labels.
         If we create a new pod with differ label, the replicaset will not filter the new pod.
-
-    - Deployment startegy
         
-
     - ReplicaSet:
         Maintains a stable set of replicas Pods running at any
 
@@ -111,6 +108,9 @@
         apiVersion: {kubernetes api version}
         kind: {type of the object}
         metadata: {All attributes for the specific object}
+            name:
+            namespace:
+            labels: 
         spec: {Dictionary to put the containers for deploying in the pod - This defines what inside the object we are creating}
             containers:
                 -   name: {custom name}
@@ -118,8 +118,7 @@
         ```
     -
 
-## Minikube
-    Commands
+## Minikube Commands
        
         ```brew cask install minikube```
         
@@ -132,7 +131,7 @@
         To log into the Minikube
         ```minikube ssh``
 
-## Kubectl
+## Kubectl commands
 
     ```
     kubectl cluster-info
@@ -140,7 +139,8 @@
     kubectl describe {kind}
     kubectl run nginx --image nginx
     kubectl delete {kind} {name}
-    kubectl create -f pod-definition.yml
+    kubectl create -f pod-definition.yml 
+    kubectl create -f pod-definition.yml --namespace=dev
     kubectl get pods
     kubectl get pods -o wide
     kubectl get replicationcontroller
@@ -155,7 +155,148 @@
     kubectl rollout undo deployment/{deployment-name}
     kubectl apply -f {file-name}
     kubectl get services
+    kubectl create configmap <name> --from-literal=<key>=<value>
+    kubectl create configmap <name> --from-file=<path>
+    kubectl create -f test-config.yml
+    kubectl get configmaps
+    kubectl describe configmaps
+    kubectl get secret app-secret -o yaml
+    kubectl describe secrets
+    kubectl describe pod {pod-name}
+    kubectl exec -it {pod-name} ls /var/run/secrets/kubernetes.io/serviceaccount
+
+    kubectl create serviceaccount dashboard-sa  (It creates a token) -> (saved in a secret object)
+    kubectl get serviceaccount
+    kubectl describe serviceaccount dashboard-sa
+    kubectl describe secret dashboard-sa-token-{value}
+         curl https://192.168.56.70:6443/api -insecure --header "Authorization: Bearer {token}"
+
+
+    -- Extract the definition file to a file
+    kubectl get pod <pod-name> -o yaml > pod-defnition.yaml
+    kubectl edit pod <pod-name>
+    kubectl get pods --namespace=kube-system
+    kubectl get pods --all-namespaces
+    kubectl create namespace dev
+    kubectl config set-context $(kubectl config current-context) --namespace=dev
+    
+
+    Creation commands:
+
+        -- Create an NGINX Pod
+        kubectl run --generator=run-pod/v1 nginx --image=nginx
+
+        -- Generate POD Manifest YAML file (-o yaml). Don't create it(--dry-run)
+        kubectl run --generator=run-pod/v1 nginx --image=nginx --dry-run -o yaml
+
+        -- Create a deployment
+        kubectl run --generator=deployment/v1beta1 nginx --image=nginx
+
+        -- Or the newer recommended way:
+        kubectl create deployment --image=nginx nginx
+
+        -- Generate Deployment YAML file (-o yaml). Don't create it(--dry-run)
+        kubectl run --generator=deployment/v1beta1 nginx --image=nginx --dry-run -o yaml
+        kubectl create deployment --image=nginx nginx --dry-run -o yaml
+
+        -- Generate Deployment YAML file (-o yaml). Don't create it(--dry-run) with 4 Replicas (--replicas=4)
+        kubectl run --generator=deployment/v1beta1 nginx --image=nginx --dry-run --replicas=4 -o yaml
+        
+        -- Save it to a file - (If you need to modify or add some other details)
+        kubectl run --generator=deployment/v1beta1 nginx --image=nginx --dry-run --replicas=4 -o yaml > nginx-deployment.yaml
+
+        -- Create a Service named nginx of type NodePort and expose it on port 30080 on the nodes:
+        kubectl create service nodeport nginx --tcp=80:80 --node-port=30080 --dry-run -o yaml
+
+    How to use local images:
+
+        # Start minikube
+        minikube start
+
+        # Set docker env
+        eval $(minikube docker-env)
+
+        # Build image
+        docker build -t foo:0.0.1 .
+
+        # Run in minikube
+        kubectl run hello-foo --image=foo:0.0.1 --image-pull-policy=Never
+
+        # Check that it's running
+        kubectl get pods
+
     ```
+
+## Docker 
+    - Container are specific task or process, they live as long the process alive
+    - Dockerfile 
+        -> CMD command to define which program will be run
+        -> ENTRYPOINT command to define first command for running 
+            e.g: ENTRYPOINT ["sleep"] -> docker run ubuntu-sleeper 10 -> it'll be use the value 10 
+
+    1. Commands:
+        - docker run ubuntu [commands] e.g docker run ubuntu sleep 5
+        - docker run --entrypoint sleep2.0 ubuntu-sleeper 10
+        
+
+
+
+
+## Advance
+    1. Namespace: Place where all objects of kubernets will be created
+
+        - Kubernetes namespace:
+
+            - kube-system: 
+                Kubernetes creates a set of pods and service for internal purpose such as netwoking DNS in order to isolate these from the user (avoid delete or modifications by the user)  
+
+            - Default: 
+                Main namespace
+
+            - kube-public:
+                Contains resources that should be available to all users are created
+
+        - To connect:
+            
+            - To use a service in other namespace we should use the next name parameters because the name is created like this in the DNS service.
+                serviceName.namspace.svc.cluster.local
+
+        - To create a new namespace
+            
+            - definition file
+
+                apiVersion: v1
+                kind: Namespace
+                metadata: 
+                    name: (newName)
+
+            - command: kubectl create namespace dev
+
+        - To define the main namespace in my system
+
+            - kubectl config set-context $(kubectl config current-context) --namespace=dev
+
+        - To define resources for the namespace
+
+            - Resource quota
+                - deinition file:
+
+                    apiVersion: v1
+                    kind: ResourceQuota
+                    metadata:
+                        name: computer-quota
+                        namespace: dev
+                    spec:
+                        hard:
+                            pods: "10"
+                            requests.cpu: "4"
+                            requests.memory: 5Gi
+                            limits.cpu: "10"
+                            limits.memory: 10Gi
+
+                - kubectl create -f quota.yml
+
+
 
 ## References and web pages
     - https://www.osboxes.org

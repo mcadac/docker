@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pol-config
+  labels:
+    app: myapplication
+data:
+  POL_HOME: /usr/local/payu
+  ENV: DEV
