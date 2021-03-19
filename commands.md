@@ -222,6 +222,9 @@ DOCKER-APP:
 81. docker config inspect --pretty redeban-adapter-config --> **Print docker config file**
 82. docker stack ps {service_name} --no-trunc  [Print out ERROR column and find out why service can't be deployed]
 
+## MAC
+~/Library/Group Containers/group.com.docker 
+
 ## Docker files
 1. RUN apt-get update && apt-get install -y --no-install-recommends vim && apt-get clean
 2. HEALTHCHECK --interval=20s --retries=5 --timeout=30s --start-period=5s CMD curl -I -f "http://localhost:8080" || exit 1
