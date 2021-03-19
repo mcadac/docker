@@ -220,7 +220,7 @@ DOCKER-APP:
 79. docker system prune -a
 80. **Keep to a docker container up** --> add tail -f /dev/null
 81. docker config inspect --pretty redeban-adapter-config --> **Print docker config file**
-82. docker stack ps {service_name} --no-trunc
+82. docker stack ps {service_name} --no-trunc  [Print out ERROR column and find out why service can't be deployed]
 
 ## Docker files
 1. RUN apt-get update && apt-get install -y --no-install-recommends vim && apt-get clean
